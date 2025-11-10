@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+struct Student {
+    int id;
+    char name[50];
+    float cgpa;
+};
+
+class StudentDB {
+    Student *s;
+    int n;
+public:
+    StudentDB() { s = NULL; n = 0; }
+    ~StudentDB() { delete[] s; }
+
+    void add() {
+        s = (Student*)realloc(s, (n + 1) * sizeof(Student));
+        cout << "Enter ID Name CGPA: ";
+        cin >> s[n].id >> s[n].name >> s[n].cgpa;
+        n++;
+        cout << "Added!\n";
+    }
+
+    void display() {
+        if (n == 0) cout << "No records!\n";
+        else {
+            cout << "\nID\tName\tCGPA\n";
+            for (int i = 0; i < n; i++)
+                cout << s[i].id << "\t" << s[i].name << "\t" << s[i].cgpa << endl;
+        }
+    }
+
+    void sortByName() {
+        for (int i = 0; i < n - 1; i++)
+            for (int j = i + 1; j < n; j++)
+                if (strcmp(s[i].name, s[j].name) > 0)
+                    swap(s[i], s[j]);
+        cout << "Sorted by Name!\n";
+    }
+
+    void sortByCGPA() {
+        for (int i = 0; i < n - 1; i++)
+            for (int j = i + 1; j < n; j++)
+                if (s[i].cgpa < s[j].cgpa)
+                    swap(s[i], s[j]);
+        cout << "Sorted by CGPA!\n";
+    }
+
+    void search() {
+        int id, found = 0;
+        cout << "Enter ID to search: ";
+        cin >> id;
+        for (int i = 0; i < n; i++)
+            if (s[i].id == id) {
+                cout << "Found: " << s[i].name << " " << s[i].cgpa << endl;
+                found = 1;
+            }
+        if (!found) cout << "Not Found!\n";
+    }
+};
+
+int main() {
+    StudentDB db;
+    int ch;
+    do {
+        cout << "\n1.Add 2.Display 3.Search 4.Sort(Name) 5.Sort(CGPA) 6.Exit\nChoice: ";
+        cin >> ch;
+        switch (ch) {
+            case 1: db.add(); break;
+            case 2: db.display(); break;
+            case 3: db.search(); break;
+            case 4: db.sortByName(); break;
+            case 5: db.sortByCGPA(); break;
+            case 6: cout << "Exit!\n"; break;
+            default: cout << "Invalid!\n";
+        }
+    } while (ch != 6);
+    return 0;
+}
