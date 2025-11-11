@@ -1,0 +1,30 @@
+Step 1: Start
+Step 2: Initialize Graph
+1. Input number of vertices V.
+2. Create a V x V adjacency matrix graph to store edge weights.
+o graph[i][j] = weight of edge between vertex i and j.
+o graph[i][j] = 0 if no edge exists.
+Step 3: Initialize Prim’s Algorithm
+1. Create arrays:
+o key[]: Stores minimum weight to include vertex in MST. Initialize all to ∞ (or
+sys.maxsize).
+o parent[]: Stores parent of each vertex in MST. Initialize all to None.
+o mstSet[]: Boolean array to track vertices included in MST. Initialize all to False.
+2. Set key[0] = 0 (start from vertex 0).
+3. Set parent[0] = -1 (starting vertex has no parent).
+Step 4: Construct MST
+1. Repeat V times (for all vertices):
+a. Find vertex u with minimum key[u] that is not yet in MST (mstSet[u] = False).
+b. Include u in MST: mstSet[u] = True.
+c. For all vertices v adjacent to u:
+o If graph[u][v] > 0 and v not in MST and graph[u][v] < key[v]:
+▪ Update key[v] = graph[u][v]
+▪ Update parent[v] = u
+
+Step 5: Print MST
+1. For each vertex i from 1 to V-1:
+o Print edge: parent[i] -- i == graph[i][parent[i]]
+
+o Accumulate total cost: total_cost += graph[i][parent[i]]
+2. Print Minimum Spanning Tree Cost.
+Step 6: End

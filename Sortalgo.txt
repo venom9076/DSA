@@ -1,0 +1,45 @@
+Step 1: Start
+Step 2: Initialize
+• Create a pointer students = nullptr.
+• Set count = 0.
+• Declare variable choice for menu selection.
+Step 3: Display Menu
+Repeat until the user selects Exit (choice = 6):
+1. Add Student
+2. Display Students
+3. Sort by Name (Bubble Sort)
+4. Sort by CGPA Ascending (Selection Sort)
+5. Sort by CGPA Descending (Selection Sort)
+6. Exit
+Step 4: Add Student
+1. Create a new array temp of size count + 1.
+2. Copy all existing students from students into temp.
+3. Input new student details:
+o Student ID
+o Student Name
+o Student CGPA
+4. Store new student in temp[count].
+5. Delete old array students.
+6. Update students = temp.
+
+7. Increment count.
+Step 5: Display Students
+• Print details of all students (id, name, cgpa) from index 0 to count-1.
+Step 6: Bubble Sort by Name
+1. Repeat for each pass i = 0 to count-2:
+o Compare adjacent names (students[j] and students[j+1]) using strcmp.
+o If name[j] > name[j+1], swap them.
+2. Continue until all names are sorted alphabetically.
+Step 7: Selection Sort by CGPA
+1. For each index i = 0 to count-2:
+o Set idx = i.
+o Compare CGPA with remaining students (j = i+1 to count-1).
+o If sorting ascending → choose smallest CGPA.
+o If sorting descending → choose largest CGPA.
+o Swap students[i] and students[idx].
+
+Step 8: Exit
+• If user chooses option 6:
+o Print "Exiting...".
+o Free memory (delete[] students).
+o End program.

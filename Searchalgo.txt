@@ -1,0 +1,43 @@
+Step 1: Start
+Step 2: Initialize
+• Create a dynamic array pointer students (initially NULL).
+• Initialize variable size = 0 (to track the number of students).
+Step 3: Display Menu
+• Show menu options repeatedly until the user chooses to exit:
+1. Add Student
+2. Linear Search by ID
+3. Binary Search by ID
+4. Exit
+Step 4: Add Student
+1. Reallocate memory for students to hold one more record.
+2. If memory allocation fails → display error and terminate.
+3. Input:
+o Student ID
+o Student Name
+o Student CGPA
+4. Store entered details in the newly allocated memory.
+5. Increment size by 1.
+Step 5: Linear Search (Search by ID)
+1. Input searchID.
+
+2. Traverse student records from index 0 to size-1.
+3. If any student’s id == searchID:
+o Display student details.
+o Exit search.
+4. If no match found → Display "Student not found (Linear Search)."
+Step 6: Binary Search (Search by ID)
+1. Input searchID.
+2. Sort the array students by id using qsort.
+3. Initialize: low = 0, high = size - 1.
+4. Repeat until low > high:
+o Find middle index mid = (low + high) / 2.
+o If students[mid].id == searchID:
+▪ Display student details.
+▪ Exit search.
+o Else if students[mid].id < searchID: set low = mid + 1.
+o Else set high = mid - 1.
+5. If no match found → Display "Student not found (Binary Search)."
+Step 7: Exit
+• If user selects option 4, display "Exiting program..."
+• Free allocated memory using free(students).
+• Terminate program.

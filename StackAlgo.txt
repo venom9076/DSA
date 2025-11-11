@@ -1,0 +1,50 @@
+Step 1: Start
+Step 2: Define Stack ADT (Linked List Implementation)
+1. Define a structure Node with:
+o data (stores stack element).
+o next (pointer to next node).
+2. Define class Stack with:
+o Pointer topNode.
+o Functions:
+▪ push(value) → Insert element at top.
+▪ pop() → Remove element from top.
+▪ top() → Return top element.
+▪ isEmpty() → Check if stack is empty.
+▪ Destructor → Free all nodes.
+
+Step 3: Define Helper Functions
+1. isOperator(c) → Return true if c is one of + , - , * , / , ^.
+2. precedence(c) → Return precedence:
+o ^ → 3
+o * or / → 2
+o + or - → 1
+o Otherwise → -1
+
+Step 4: Infix to Postfix Conversion Function
+Input: String infix (expression in infix form).
+Output: String postfix (converted postfix expression).
+Algorithm:
+1. Initialize an empty Stack<char> st.
+2. Initialize an empty string result.
+3. For each character c in infix:
+o Case 1: If c is operand (isalnum(c)):
+→ Append c to result.
+o Case 2: If c == '(':
+→ Push c onto stack.
+
+o Case 3: If c == ')':
+→ While stack not empty and top is not '(':
+→ Pop top from stack and append to result.
+→ Pop '(' from stack.
+o Case 4: If c is operator:
+→ While stack not empty and precedence of top ≥ precedence of c:
+▪ If both are ^ (right associative), break loop.
+▪ Otherwise, pop top and append to result.
+→ Push current operator c onto stack.
+
+4. After scanning all characters:
+o While stack is not empty:
+→ Pop top and append to result.
+
+5. Return result.
+Step 5: End

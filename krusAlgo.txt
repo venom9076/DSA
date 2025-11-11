@@ -1,0 +1,35 @@
+Step 1: Start
+Step 2: Initialize Graph
+1. Create a Graph class with:
+o V = number of vertices
+o graph = empty list to store edges in the form [u, v, w]
+2. Add edges to the graph using add_edge(u, v, w).
+Step 3: Prepare for MST
+1. Initialize result = [] to store MST edges.
+2. Sort all edges in graph in ascending order of weight.
+3. Create two lists for disjoint set (Union-Find):
+o parent[i] = i for all vertices
+o rank[i] = 0 for all vertices
+Step 4: Kruskal’s Algorithm Main Loop
+1. Initialize counters:
+o i = 0 → index for sorted edges
+o e = 0 → count of edges included in MST
+2. While e < V-1 (MST has exactly V-1 edges):
+1. Pick edge graph[i] = [u, v, w]
+2. Increment i by 1
+3. Find roots of u and v using find() (with path compression):
+
+▪ If find(u) != find(v) → no cycle
+▪ Add edge [u, v, w] to result
+▪ Increment e by 1
+▪ Union the sets of u and v using union() (by rank)
+▪ Else → discard edge (would form a cycle)
+
+Step 5: Display MST
+1. Print all edges in result in the format: u -- v == w
+2. Compute total cost by summing the weights of edges in MST
+3. Print total MST cost
+Step 6: End
+Step 7: Supporting Functions
+• find(parent, i) → returns root of vertex i (with path compression)
+• union(parent, rank, x, y) → joins sets of x and y using rank to minimize tree height
